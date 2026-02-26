@@ -23,8 +23,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
 
   for (const key of allowed) {
     if (key in body) {
-      // @ts-expect-error dynamic key
-      updates[key] = body[key];
+      updates[key] = body[key] as never;
     }
   }
 
