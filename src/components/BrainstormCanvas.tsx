@@ -42,10 +42,14 @@ function FlowCanvas() {
     }
   }, [isStreaming]);
 
-  // Start SSE stream when session is created
+  // Start SSE stream when session is created (skip if nodes already loaded directly)
   useEffect(() => {
-    if (!sessionId || isStreaming || nodes.length === 0) return;
-    if (nodes.some(n => n.data.agentType !== 'root')) return; // already has ideas
+    if (!sessionId || isStreaming) return;
+    // Read the latest store state directly to avoid stale closure values when
+    // React batches reset()+initSession()+addChildNodes() into one render cycle
+    const currentNodes = useStore.getState().nodes;
+    if (currentNodes.length === 0) return;
+    if (currentNodes.some(n => n.data.agentType !== 'root')) return; // already has ideas
 
     const es = new EventSource(`/api/sessions/${sessionId}/stream`);
     eventSourceRef.current = es;

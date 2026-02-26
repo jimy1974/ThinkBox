@@ -46,7 +46,16 @@
       "Bash(git init)",
       "Bash(git config user.email \"jimy1974@github.com\")",
       "Bash(git config user.name \"jimy1974\")",
-      "Bash(git add -A)"
+      "Bash(git add -A)",
+      "Bash(git commit:*)",
+      "Bash(git remote add origin https://github.com/jimy1974/ThinkBox.git)",
+      "Bash(git branch -M main)",
+      "Bash(git push -u origin main)",
+      "Bash(git add src/lib/groq.ts)",
+      "Bash(git -C \"C:\\\\Users\\\\james\\\\Desktop\\\\ThinkBox\" status)",
+      "Bash(git -C \"C:\\\\Users\\\\james\\\\Desktop\\\\ThinkBox\" diff \"src/app/api/nodes/[id]/route.ts\")",
+      "Bash(git -C \"C:\\\\Users\\\\james\\\\Desktop\\\\ThinkBox\" add \"src/app/api/nodes/[id]/route.ts\")",
+      "Bash(git -C:*)"
     ]
   }
 }

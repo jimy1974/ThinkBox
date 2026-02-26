@@ -163,9 +163,9 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
         send(controller, { type: 'complete', data: {} });
       } catch (err) {
         console.error('[SSE stream error]', err);
-        send(controller, { type: 'error', data: { message: String(err) } });
+        try { send(controller, { type: 'error', data: { message: String(err) } }); } catch { /* already closed */ }
       } finally {
-        controller.close();
+        try { controller.close(); } catch { /* already closed — e.g. early return for existing_nodes */ }
       }
     },
   });

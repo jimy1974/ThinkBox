@@ -29,7 +29,7 @@ function formatDate(isoStr: string): string {
 }
 
 export default function SessionHistoryPanel() {
-  const { showHistory, setShowHistory, initSession, reset } = useStore();
+  const { showHistory, setShowHistory, initSession, reset, addChildNodes, setPhase, triggerFitView } = useStore();
   const { data: authSession, status } = useSession();
 
   const [sessions, setSessions] = useState<SessionSummary[]>([]);
@@ -68,9 +68,21 @@ export default function SessionHistoryPanel() {
       const rootNode = data.nodes.find((n: DBNode) => n.agent_type === 'root');
       if (!rootNode) throw new Error('Session root node not found');
 
+      // Load nodes directly — do NOT rely on SSE for restoration, because
+      // React 18 batches reset()+initSession() and the sessionId might not
+      // appear to change, so the SSE useEffect would never fire.
+      const otherNodes = (data.nodes as DBNode[]).filter(n => n.agent_type !== 'root');
+
       reset();
       initSession(data.session.id, data.session.original_prompt, rootNode);
-      // Panel closes automatically via initSession (sets showHistory: false)
+
+      if (otherNodes.length > 0) {
+        addChildNodes(otherNodes);
+      }
+
+      setPhase('complete', 'Session restored');
+      triggerFitView();
+      // showHistory is set to false inside initSession already
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     } finally {
