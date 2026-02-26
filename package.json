@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Interactive multi-agent brainstorming platform",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p ${PORT:-3000}",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p ${PORT:-3000}"
   },
   "license": "ISC",
   "type": "commonjs",
