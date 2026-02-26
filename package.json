@@ -1,0 +1,36 @@
+{
+  "name": "thinkbox",
+  "version": "1.0.0",
+  "description": "Interactive multi-agent brainstorming platform",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/dagre": "^0.7.53",
+    "@types/node": "^25.3.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/uuid": "^10.0.0",
+    "@xyflow/react": "^12.10.1",
+    "autoprefixer": "^10.4.27",
+    "better-sqlite3": "^12.6.2",
+    "dagre": "^0.8.5",
+    "groq-sdk": "^0.37.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.0",
+    "next": "^14.2.35",
+    "next-auth": "^4.24.13",
+    "postcss": "^8.5.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3",
+    "uuid": "^13.0.0",
+    "zustand": "^5.0.11"
+  }
+}

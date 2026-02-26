@@ -1,0 +1,24 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Next.js
+/.next/
+/out/
+
+# Misc
+.DS_Store
+*.pem
+.env*.local
+*.db
+*.db-shm
+*.db-wal
+
+# Debug
+npm-debug.log*
+.pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
