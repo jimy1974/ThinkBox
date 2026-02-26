@@ -29,7 +29,7 @@ export function sanitizeWebContent(text: string): string {
   // Strip potential injection patterns from web-sourced content
   return text
     .replace(/<[^>]*>/g, '') // strip HTML
-    .replace(/\[INST\].*?\[\/INST\]/gs, '') // strip instruction tags
+    .replace(/\[INST\][\s\S]*?\[\/INST\]/g, '') // strip instruction tags
     .replace(/system:/gi, '') // strip system prompts
     .substring(0, 2000); // hard limit
 }
